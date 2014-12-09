@@ -14,9 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.FloatArray;
-import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.deeep.jam.background.Space;
 import com.deeep.jam.entities.*;
 import com.deeep.jam.input.Assets;
@@ -269,8 +267,9 @@ public class World {
                     }
                 }
                 powerBlobManager.update(deltaT, this);
-                if (damageTimer >= 1000)
-                    gameOver();
+
+//                if (damageTimer >= 1000)
+                gameOver();
 
                 difficulty.spawn(globe, blobManager);
 
@@ -292,6 +291,8 @@ public class World {
     private void gameOver() {
         state = GAMEOVER;
         /** Prepare game over gamesOverText */
+        bitmapFont.setScale(1);
+
         resetText();
         prepareDrop();
 
@@ -390,10 +391,10 @@ public class World {
 
         batch.end();
 
-        if (state == GAMEOVER){
+        if (state == GAMEOVER) {
             stage.draw();
         }
-            //
+        //
     }
 
     /**
