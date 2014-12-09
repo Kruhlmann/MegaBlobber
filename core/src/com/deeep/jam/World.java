@@ -115,7 +115,8 @@ public class World {
             gameOverListChar[i] = new TextButton(String.valueOf(gamesOverText.charAt(i)), style);
             gameOverListChar[i].setTransform(true);
             gameOverListChar[i].setPosition(110, 360);
-            gameOverListChar[i].setOrigin(advances1.get(i) / 2, gameOverListChar[i].getHeight() / 4);
+            gameOverListChar[i].setOrigin(advances1.get(i), gameOverListChar[i].getHeight() / 4);
+            gameOverListChar[i].setScale(3);
             stage.addActor(gameOverListChar[i]);
         }
 
@@ -123,10 +124,11 @@ public class World {
             scoreLabelChar[i] = new TextButton(String.valueOf(scoreLabelText.charAt(i)), style);
             scoreLabelChar[i].setTransform(true);
             scoreLabelChar[i].setPosition(160, 360);
-            scoreLabelChar[i].setOrigin(advances2.get(i) / 2, scoreLabelChar[i].getHeight() / 4);
+            scoreLabelChar[i].setOrigin(advances2.get(i), scoreLabelChar[i].getHeight() / 4);
+            gameOverListChar[i].setScale(4);
             stage.addActor(scoreLabelChar[i]);
         }
-
+        stage.draw();
         state = PLAYING;
     }
 
@@ -280,7 +282,6 @@ public class World {
                 break;
             case GAMEOVER:
                 stage.act();
-
                 if (Gdx.input.justTouched())
                     instantiate();
 
@@ -389,8 +390,10 @@ public class World {
 
         batch.end();
 
-        if (state == GAMEOVER)
+        if (state == GAMEOVER){
             stage.draw();
+        }
+            //
     }
 
     /**
