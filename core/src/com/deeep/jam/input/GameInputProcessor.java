@@ -1,5 +1,6 @@
 package com.deeep.jam.input;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.deeep.jam.World;
 import com.deeep.jam.screens.GameScreen;
@@ -46,8 +47,9 @@ public class GameInputProcessor implements InputProcessor {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
 
         if (screen.world.state == World.GAMEOVER) return false;
-
-        screen.world.globe.setAngleFacing((float) (Math.atan2(screenX - 256, 512 - screenY - 256) * -1));
+        float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
+        float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
+        screen.world.globe.setAngleFacing((float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) * -1));
 
         this.screenX = screenX;
         this.screenY = screenY;
@@ -57,10 +59,12 @@ public class GameInputProcessor implements InputProcessor {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-
+        System.out.println(screenX + ", " + screenY);
         if (screen.world.state == World.GAMEOVER) return false;
+        float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
+        float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
+        screen.world.globe.setAngleFacing((float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) * -1));
 
-        screen.world.globe.setAngleFacing((float) (Math.atan2(screenX - 256, 512 - screenY - 256) * -1));
 
         this.screenX = screenX;
         this.screenY = screenY;

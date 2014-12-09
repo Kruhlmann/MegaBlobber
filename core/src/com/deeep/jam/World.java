@@ -14,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.FloatArray;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.deeep.jam.background.Space;
 import com.deeep.jam.entities.*;
@@ -27,6 +29,8 @@ import java.util.ArrayList;
  * Created by Andreas on 05/12/2014.
  */
 public class World {
+    public static final float VIRTUAL_WIDTH = 512;
+    public static final float VIRTUAL_HEIGHT = 512;
     public static final int PLAYING = 0;
     public static final int GAMEOVER = 1;
     private static final float time = 0.5f, delay = 0.2f;
@@ -86,10 +90,11 @@ public class World {
         background.setRotation(90F);
         damageTimer = 0;
         space = new Space(500);
-        //difficulty.spawn(globe, blobManager);
+        difficulty.spawn(globe, blobManager);
         roulette = new Roulette(this, globe);
 
-        stage = new Stage(new StretchViewport(512, 512), Core.batch);
+        stage = new Stage(new FitViewport(512, 512), Core.batch);
+
         gamesOverText = "Game Over";
         scoreLabelText = "Score: ";
         gameOverListChar = new TextButton[gamesOverText.length()];
@@ -194,6 +199,7 @@ public class World {
     }
 
     public void update(float deltaT) {
+        stage.act();
         switch (state) {
             case PLAYING:
                 space.update(deltaT);
@@ -293,7 +299,8 @@ public class World {
     }
 
     public void draw(SpriteBatch batch) {
-
+        sR.setProjectionMatrix(batch.getProjectionMatrix());
+        sR.setTransformMatrix(batch.getTransformMatrix());
         Gdx.graphics.getGL20().glClearColor(0, 0, 0, 1);
         Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         Gdx.gl.glEnable(GL20.GL_BLEND);

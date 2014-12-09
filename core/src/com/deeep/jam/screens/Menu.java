@@ -67,7 +67,10 @@ public class Menu {
         }
 
         public void draw(BitmapFont bitmapFont, SpriteBatch spriteBatch) {
-            float rotation = (float) Math.atan2(512 - Gdx.input.getY() - 256, Gdx.input.getX() - 256);
+            float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * Gdx.input.getX();
+            float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * Gdx.input.getY();
+            float rotation = (float)  (Math.atan2(World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2, mouseX - World.VIRTUAL_WIDTH / 2));
+            //float rotation = (float) Math.atan2(512 - Gdx.input.getY() - 256, Gdx.input.getX() - 256);
             if (freezeMouse != 0) {
                 rotation = freezeMouse;
             }
