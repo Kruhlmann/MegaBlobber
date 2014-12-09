@@ -268,8 +268,8 @@ public class World {
                 }
                 powerBlobManager.update(deltaT, this);
 
-//                if (damageTimer >= 1000)
-                gameOver();
+                if (damageTimer >= 1000)
+                    gameOver();
 
                 difficulty.spawn(globe, blobManager);
 

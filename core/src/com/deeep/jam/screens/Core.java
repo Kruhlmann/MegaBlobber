@@ -25,7 +25,7 @@ public class Core extends AbstractGame {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
-        setScreen(new GameScreen());
+        setScreen(new SplashScreen());
     }
 
     /**
