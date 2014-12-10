@@ -59,7 +59,6 @@ public class GameInputProcessor implements InputProcessor {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        System.out.println(screenX + ", " + screenY);
         if (screen.world.state == World.GAMEOVER) return false;
         float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
         float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;

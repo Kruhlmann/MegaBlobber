@@ -2,6 +2,7 @@ package com.deeep.jam.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.deeep.jam.input.Assets;
+import com.deeep.jam.screens.TextEffects;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,7 +16,7 @@ public class Difficulty {
     public int kills = 0;
     public int consecutive;
     public int killsToDifficult = 1;
-    public int maxEnemiesAlive = 5;
+    public int maxEnemiesAlive = 0;
     public int enemiesAlive = 0;
     private float minForce = 40;
     private float maxForce = 80;
@@ -212,6 +213,7 @@ public class Difficulty {
             killsToDifficult = 2;
             if (difficulty == 1) {
                 if (colors.size() > 0) {
+                    TextEffects.text = "Colour up!";
                     globe.getGlobeImage().addRegion(colors.get(0));
                     colors.remove(0);
                 }
@@ -220,11 +222,16 @@ public class Difficulty {
                 System.out.println("increase color");
                 if (colors.size() > 0) {
                     globe.getGlobeImage().addRegion(colors.get(0));
+                    TextEffects.text = "Colour up!";
                     colors.remove(0);
-                    maxEnemiesAlive = 1;
+                    maxEnemiesAlive -= 1;
+                } else {
+                    TextEffects.text = "Enemies up!";
+                    System.out.println("increase amount");
+                    maxEnemiesAlive++;
                 }
-            }
-            if (difficulty % 4 == 0) {
+            } else if (difficulty % 4 == 0) {
+                TextEffects.text = "Enemies up!";
                 System.out.println("increase amount");
                 maxEnemiesAlive++;
             }
@@ -237,7 +244,7 @@ public class Difficulty {
     public void spawn(Globe globe, BlobManager blobManager) {
         while (enemiesAlive < maxEnemiesAlive) {
             enemiesAlive++;
-            blobManager.blobs.add(randomBlob(globe));
+            blobManager.blobs.add(randomBlob(blobManager, globe));
         }
     }
 
@@ -245,11 +252,49 @@ public class Difficulty {
         return multiplier;
     }
 
-    private Blob randomBlob(Globe globe) {
+    private Blob randomBlob(BlobManager blobManager, Globe globe) {
         Random random = new Random();
+        /* weighted random
+        int totalBlobs = blobManager.blobs.size();
+        int totalRedBlobs = 0;
+        int totalGreenBlobs = 0;
+        int totalBlueBlobs = 0;
+        int totalCyanBlobs = 0;
+        int segmentAmount = globe.getGlobeImage().getSegments();
+        WeightedRandom weightedRandom[] = new WeightedRandom[segmentAmount];
+        int colours[] = new int[segmentAmount];
+        for (Blob blob : blobManager.blobs) {
+            if (blob.color.equals(Color.RED)) {
+                colours[0]++;
+            } else if (blob.color.equals(Color.BLUE)) {
+                colours[1]++;
+            } else if (blob.color.equals(Color.GREEN)) {
+                colours[2]++;
+            } else {
+                colours[3]++;
+            }
+        }
+        float weight = 0;
+        for (int i = 0; i < weightedRandom.length; i++) {
+            for (int j = 0; j < colours.length; j++) {
+                weight = 1 -
+                weightedRandom[i] = new WeightedRandom(1,1);
+            }
+        }
+        */
         float speed = minForce + random.nextFloat() * (maxForce - minForce);
         float rotation = (float) (random.nextFloat() * 2 * Math.PI);
         Blob blob = new Blob(random.nextInt(30) + 362, rotation, speed, globe.getGlobeImage().getRandomColor());
         return blob;
+    }
+
+    class WeightedRandom {
+        public float number;
+        public float weight;
+
+        WeightedRandom(float number, float weight) {
+            this.number = number;
+            this.weight = weight;
+        }
     }
 }

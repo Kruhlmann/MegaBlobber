@@ -20,6 +20,7 @@ import com.deeep.jam.entities.*;
 import com.deeep.jam.input.Assets;
 import com.deeep.jam.screens.Core;
 import com.deeep.jam.screens.Menu;
+import com.deeep.jam.screens.TextEffects;
 
 import java.util.ArrayList;
 
@@ -62,6 +63,8 @@ public class World {
     private String gamesOverText, scoreLabelText, scoreText;
     private TextButton.TextButtonStyle style;
 
+    public TextEffects textEffects;
+
     /**
      * ༼ง ͠ຈ ͟ل͜ ͠ຈ༽ง gimme my memes ༼ง ͠ຈ ͟ل͜ ͠ຈ༽ง
      */
@@ -72,6 +75,7 @@ public class World {
 
     public void instantiate() {
         Assets.getAssets().loadBitmapFont();
+        textEffects = new TextEffects();
         bitmapFont = Assets.getAssets().getBitmapFont();
         menu = new Menu(this);
         difficulty = new Difficulty();
@@ -376,6 +380,7 @@ public class World {
             explosionOverlay.setAlpha(explosionTimer * 0.004F);
             explosionOverlay.draw(batch);
         }
+        textEffects.draw(batch);
         menu.draw(batch);
 
         if (menu.showHighscores) {

@@ -22,6 +22,7 @@ public class GlobeImage {
     private float globeSize;
     private float rotation;
     private Color image[][];
+    private int segments = 1;
 
     public GlobeImage(float globeSize, float scale) {
         this.globeSize = globeSize - 1;
@@ -63,6 +64,7 @@ public class GlobeImage {
     public void addRegion(Color color) {
         regions.add(new Region(color));
         calculatePixmap();
+        segments++;
     }
 
     public void removeRegion(int index) {
@@ -161,6 +163,10 @@ public class GlobeImage {
         texture.setWrap(Texture.TextureWrap.ClampToEdge, Texture.TextureWrap.ClampToEdge);
         sprite.setTexture(texture);
         sprite = new Sprite(texture);
+    }
+
+    public int getSegments() {
+        return segments;
     }
 
     static class Region {
