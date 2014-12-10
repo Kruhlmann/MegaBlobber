@@ -1,0 +1,9 @@
+android
+game id 241357190275
+
+web
+client id for web 241357190275-04lnv2kagh1etbf2hptiii8csi8ioh61.apps.googleusercontent.com
+client secret yUxRwUIzifKlKDvCvI53E5HE
+email 241357190275-04lnv2kagh1etbf2hptiii8csi8ioh61@developer.gserviceaccount.com
+redirect uris http://deeepgames.com/oauth2callback
+javascript origins http://deeepgames.com
