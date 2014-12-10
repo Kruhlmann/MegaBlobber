@@ -159,7 +159,7 @@ public class World {
             stage.addActor(scoreChar[i]);
         }
         for (int i = 0; i < scoreText.length(); i++) {
-            scoreLabelChar[i].setPosition(170 + post3.get(i), 330);
+            scoreLabelChar[i].setPosition(170 - (scoreText.length() * 2) + post3.get(i), 330);
             scoreLabelChar[i].setOrigin(advances3.get(i) / 2, scoreChar[i].getHeight() / 4);
             scoreLabelChar[i].setColor(0, 0, 0, 1);
             scoreLabelChar[i].setScale(1f);
