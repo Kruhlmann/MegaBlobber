@@ -1,6 +1,7 @@
 package com.deeep.mblobber.input;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -103,10 +104,12 @@ public class Assets {
         incorrect = Gdx.audio.newSound(Gdx.files.internal("sound/knack.mp3"));
         power = Gdx.audio.newSound(Gdx.files.internal("sound/blob.mp3"));
         menu = Gdx.audio.newSound(Gdx.files.internal("sound/menu.wav"));
-        Sound music = Gdx.audio.newSound(Gdx.files.internal("music.mp3"));
+        Music music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
+        music.play();
+        music.setLooping(true);
         pling = Gdx.audio.newSound(Gdx.files.internal("sound/pling.mp3"));
         ice = Gdx.audio.newSound(Gdx.files.internal("sound/ice.mp3"));
-        music.loop(0.35f);
+//        music.loop(0.35f);
         /**
          * Ruwin files
          * start, game_over, new_highscore, quit, easy, keep_it_up, well_done, nice_going, wow, amazing, incredible, oh_my_god, multiplier_loss, angel_power, protection, points, hasta, healpower, blow, speed_slow, speed_fast;
@@ -228,6 +231,7 @@ public class Assets {
     public BitmapFont getBitmapFont() {
         return font;
     }
+
     public BitmapFont.BitmapFontData getBitmapFontData() {
         return bitmapFontData;
     }

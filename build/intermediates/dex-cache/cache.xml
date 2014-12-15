@@ -1,47 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="D:\WorkSpaces\LudumDare31\android\build\intermediates\pre-dexed\debug\gdx-box2d-1.4.1-e40e661219a0fa05a5dc5029b1965ed8591ba966.jar"
-        jar="C:\Users\scanevaro\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.4.1\9e6453d244896698694a7f3059f15ae509044101\gdx-box2d-1.4.1.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="9e6453d244896698694a7f3059f15ae509044101"/>
-    <item
-        dex="D:\WorkSpaces\LudumDare31\android\build\intermediates\pre-dexed\debug\gdx-1.4.1-495399144eacdab1606211a3ea7aa5294cc299c8.jar"
         jar="C:\Users\scanevaro\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.4.1\df470d263438048af74860ca51fc497c16a0c76a\gdx-1.4.1.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="df470d263438048af74860ca51fc497c16a0c76a"/>
+        sha1="df470d263438048af74860ca51fc497c16a0c76a">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\gdx-1.4.1-495399144eacdab1606211a3ea7aa5294cc299c8.jar" />
+    </item>
     <item
-        dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\debug\core-1.0-b2a529d448ddc2832dfe440e10c18c2316fbf491.jar"
+        jar="C:\Users\scanevaro\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.4.1\9e6453d244896698694a7f3059f15ae509044101\gdx-box2d-1.4.1.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="9e6453d244896698694a7f3059f15ae509044101">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\gdx-box2d-1.4.1-e40e661219a0fa05a5dc5029b1965ed8591ba966.jar" />
+    </item>
+    <item
+        jar="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\classes-1745af2035ee823d1b2c0096f5d7b995ec74da0a.jar" />
+    </item>
+    <item
         jar="D:\WorkSpaces\DeeepGames\LudumDare31\core\build\libs\core-1.0.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="964129cf7d1a43e0bbd84017bd1174321b0c3cf3"/>
+        sha1="0ad6349137019eb3b4c346bca9ed206af6aef1dc">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\debug\core-1.0-b2a529d448ddc2832dfe440e10c18c2316fbf491.jar" />
+    </item>
     <item
-        dex="D:\WorkSpaces\LudumDare31\android\build\intermediates\pre-dexed\debug\box2dlights-1.3-ec9905d34f4890e4896be35ef9722e5107bc9359.jar"
-        jar="C:\Users\scanevaro\.gradle\caches\modules-2\files-2.1\com.badlogicgames.box2dlights\box2dlights\1.3\e829c3543ab5a6b3ff818615a8620024f6a14fe0\box2dlights-1.3.jar"
+        jar="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="e829c3543ab5a6b3ff818615a8620024f6a14fe0"/>
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\classes-a48d84f5b626b65fc2f1a4562198430f20869c6b.jar" />
+    </item>
     <item
-        dex="D:\WorkSpaces\LudumDare31\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.4.1-9d1738f1cdb68914045bdc01bbaa5ebce9db03c6.jar"
         jar="C:\Users\scanevaro\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.4.1\eca2621f18b162c03992bd3ecc226e8a477dc6f9\gdx-backend-android-1.4.1.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="eca2621f18b162c03992bd3ecc226e8a477dc6f9"/>
+        sha1="eca2621f18b162c03992bd3ecc226e8a477dc6f9">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\gdx-backend-android-1.4.1-9d1738f1cdb68914045bdc01bbaa5ebce9db03c6.jar" />
+    </item>
     <item
-        dex="D:\WorkSpaces\LudumDare31\android\build\intermediates\pre-dexed\debug\core-1.0-8392f3eb2170cdea24233e6e6552cdf96a23fe1a.jar"
-        jar="D:\WorkSpaces\LudumDare31\core\build\libs\core-1.0.jar"
+        jar="C:\Users\scanevaro\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="825a208d590c433db4ad032357ac17a79007ca3c"/>
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\support-annotations-20.0.0-3e7fabb9ee6e00c1418d60b63ac582dc1dd6792f.jar" />
+    </item>
     <item
-        dex="D:\WorkSpaces\LudumDare31\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.4.1-ef44eb545c69b6148eb88efb75f3e68cbb6b898f.jar"
+        jar="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.1.71\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="0f6d5c1ef2e982c3b7858408e3df389cf5d202da">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\classes-bcd4b841a6712acac4e5ff001382e68294f1eb45.jar" />
+    </item>
+    <item
+        jar="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\exploded-aar\LudumDare31\BaseGameUtils\1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="532a37196cecdce33b86740f3c6d6fe58c889315">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\classes-896c605eeb1ad05bf5853e661b8c7f3e06cd3668.jar" />
+    </item>
+    <item
+        jar="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\internal_impl-20.0.0-ab2e58dfc72dcf63d1063a94cc0a586ba7fa0914.jar" />
+    </item>
+    <item
+        jar="C:\Users\scanevaro\.gradle\caches\modules-2\files-2.1\com.badlogicgames.box2dlights\box2dlights\1.3\e829c3543ab5a6b3ff818615a8620024f6a14fe0\box2dlights-1.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e829c3543ab5a6b3ff818615a8620024f6a14fe0">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\box2dlights-1.3-ec9905d34f4890e4896be35ef9722e5107bc9359.jar" />
+    </item>
+    <item
         jar="C:\Users\scanevaro\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.4.1\5f54c6af55fa98e8dc469809e952c980e07541a\gdx-freetype-1.4.1.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="05f54c6af55fa98e8dc469809e952c980e07541a"/>
+        sha1="05f54c6af55fa98e8dc469809e952c980e07541a">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\gdx-freetype-1.4.1-ef44eb545c69b6148eb88efb75f3e68cbb6b898f.jar" />
+    </item>
 
-</pre-dex-items>
+</items>
