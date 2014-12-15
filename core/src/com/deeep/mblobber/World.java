@@ -259,10 +259,10 @@ public class World {
                 }
                 for (PowerBlob powerBlob : powerBlobManager.powerBlobs) {
                     if (!powerBlob.isDead) {
-                        float adaptedX = Gdx.input.getX() - 24;
-                        float adaptedY = 488 - Gdx.input.getY();
-                        float dX = Math.abs(adaptedX - powerBlob.x);
-                        float dY = Math.abs(adaptedY - powerBlob.y);
+                        float touchX = ((Gdx.input.getX() - ((Gdx.graphics.getWidth() - stage.getViewport().getScreenWidth()) / 2)) * (stage.getViewport().getWorldWidth() / stage.getViewport().getScreenWidth()));
+                        float touchY = (((Gdx.graphics.getHeight() - Gdx.input.getY()) - ((Gdx.graphics.getHeight() - stage.getViewport().getScreenHeight()) / 2)) * (stage.getViewport().getWorldHeight() / stage.getViewport().getScreenHeight()));
+                        float dX = Math.abs(touchX - powerBlob.x);
+                        float dY = Math.abs(touchY - powerBlob.y);
                         if (dX <= 40 && dY <= 40) {
                             powerBlob.die();
                             Assets.getAssets().power.play();
