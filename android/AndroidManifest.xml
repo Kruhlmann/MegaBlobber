@@ -15,7 +15,7 @@
             android:label="@string/app_name"
             android:theme="@style/GdxTheme">
         <activity
-                android:name="com.deeep.jam.android.AndroidLauncher"
+                android:name="com.deeep.mblobber.android.AndroidLauncher"
                 android:label="@string/app_name"
                 android:screenOrientation="landscape"
                 android:configChanges="keyboard|keyboardHidden|orientation|screenSize">

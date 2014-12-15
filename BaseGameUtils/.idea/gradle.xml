@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$USER_HOME$/.gradle/wrapper/dists/gradle-1.11-all/7qd8qq8te5j4f5q9aaei3gh3lj/gradle-1.11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../.." />
+            <option value="$PROJECT_DIR$/../../BeGenerous" />
+            <option value="$PROJECT_DIR$/../../ButtonClicker" />
+            <option value="$PROJECT_DIR$/../../CollectAllTheStars" />
+            <option value="$PROJECT_DIR$/../../CollectAllTheStars2" />
+            <option value="$PROJECT_DIR$/../../SavedGames" />
+            <option value="$PROJECT_DIR$/../../SkeletonTbmp" />
+            <option value="$PROJECT_DIR$/../../TrivialQuest" />
+            <option value="$PROJECT_DIR$/../../TrivialQuest2" />
+            <option value="$PROJECT_DIR$/../../TypeANumber" />
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
+

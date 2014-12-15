@@ -1,5 +1,11 @@
 android
 game id 241357190275
+leaderboards CgkIg-mJkIMHEAIQBw
+POINTS FOR BREAKFAST - CgkIg-mJkIMHEAIQAg
+THE MORE POINTS THE MERRIER - CgkIg-mJkIMHEAIQAw
+POINTS MANIAC - CgkIg-mJkIMHEAIQBA
+PERFECT - CgkIg-mJkIMHEAIQBQ
+IMAGOD - CgkIg-mJkIMHEAIQBg
 
 web
 client id for web 241357190275-04lnv2kagh1etbf2hptiii8csi8ioh61.apps.googleusercontent.com
