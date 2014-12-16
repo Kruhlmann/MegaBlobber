@@ -10,10 +10,14 @@ import com.deeep.mblobber.input.GameInputProcessor;
  * Created by scanevaro on 05/12/2014.
  */
 public class GameScreen implements Screen {
-
+    private Core game;
     //    private Logger logger;
     private SpriteBatch batch;
     public World world;
+
+    public GameScreen(Core game) {
+        this.game = game;
+    }
 
     @Override
     public void render(float delta) {
@@ -31,11 +35,13 @@ public class GameScreen implements Screen {
         world = new World();
 
         Gdx.input.setInputProcessor(new GameInputProcessor(this));
+
+        game.actionResolver.loginGPGS();
     }
 
     @Override
     public void resize(int width, int height) {
-        if(world!=null){
+        if (world != null) {
 
         }
     }

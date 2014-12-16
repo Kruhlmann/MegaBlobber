@@ -35,7 +35,7 @@ public class SplashScreen implements Screen {
         Timer.schedule(timer = new Timer.Task() {
             @Override
             public void run() {
-                game.setScreen(new GameScreen());
+                game.setScreen(new GameScreen(game));
             }
         }, DURATION);
     }
@@ -53,7 +53,7 @@ public class SplashScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 timer.cancel();
-                game.setScreen(new GameScreen());
+                game.setScreen(new GameScreen(game));
             }
         });
     }
