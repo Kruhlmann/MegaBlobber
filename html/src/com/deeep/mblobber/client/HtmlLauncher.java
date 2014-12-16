@@ -12,11 +12,11 @@ public class HtmlLauncher extends GwtApplication {
     public GwtApplicationConfiguration getConfig() {
         GwtApplicationConfiguration config = new GwtApplicationConfiguration((int) AbstractGame.VIRTUAL_WIDTH, (int) AbstractGame.VIRTUAL_HEIGHT);
         config.preferFlash = false;
-        return config   ;
+        return config;
     }
 
     @Override
     public ApplicationListener getApplicationListener() {
-        return new Core();
+        return new Core(null);
     }
 }

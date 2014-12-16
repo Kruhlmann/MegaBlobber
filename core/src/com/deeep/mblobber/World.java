@@ -28,6 +28,8 @@ import java.util.ArrayList;
  * Created by Andreas on 05/12/2014.
  */
 public class World {
+    private Core game;
+
     public static final float VIRTUAL_WIDTH = 512;
     public static final float VIRTUAL_HEIGHT = 512;
     public static final int PLAYING = 0;
@@ -65,11 +67,15 @@ public class World {
 
     public TextEffects textEffects;
 
+    public static int resurrects;
+
     /**
      * ༼ง ͠ຈ ͟ل͜ ͠ຈ༽ง gimme my memes ༼ง ͠ຈ ͟ل͜ ͠ຈ༽ง
      */
 
-    public World() {
+    public World(Core game) {
+        this.game = game;
+
         instantiate();
     }
 
@@ -77,7 +83,7 @@ public class World {
         Assets.getAssets().loadBitmapFont();
         textEffects = new TextEffects();
         bitmapFont = Assets.getAssets().getBitmapFont();
-        menu = new Menu(this);
+        menu = new Menu(this, game);
         difficulty = new Difficulty();
         globe = new Globe();
         blobManager = new BlobManager();
@@ -130,8 +136,14 @@ public class World {
             gameOverListChar[i].setScale(4);
             stage.addActor(scoreLabelChar[i]);
         }
+
+        if (Core.batch.isDrawing())
+            Core.batch.end();
+
         stage.draw();
         state = PLAYING;
+
+        resurrects = 0;
     }
 
     private void resetText() {
@@ -276,12 +288,6 @@ public class World {
                     gameOver();
 
                 difficulty.spawn(globe, blobManager);
-
-                /** HighScores open*/
-                if (menu.showHighscores && Gdx.input.justTouched()) {
-                    menu.showHighscores = false;
-                    instantiate();
-                }
                 break;
             case GAMEOVER:
                 stage.act();
@@ -300,8 +306,9 @@ public class World {
         resetText();
         prepareDrop();
 
-        Settings.addScore(difficulty.score);
-        Settings.save();
+        game.actionResolver.submitScoreGPGS(difficulty.score);
+//        Settings.addScore(difficulty.score);
+//        Settings.save();
     }
 
     public void draw(SpriteBatch batch) {
@@ -317,7 +324,10 @@ public class World {
         space.draw(batch, sR);
         sR.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
-        batch.begin();
+
+        if (!batch.isDrawing())
+            batch.begin();
+
         globe.draw(batch);
 
         if (state == PLAYING) {
@@ -331,6 +341,18 @@ public class World {
             bitmapFont.setScale(0.4f);
             bitmapFont.draw(batch, "" + difficulty.consecutive, 512 - 25, 512 - 25);
 
+            //points for breakfast
+            if (difficulty.score >= 5000) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQAg");
+                //the more points the merrier
+            else if (difficulty.score >= 7500) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQAw");
+                //Points maniac
+            else if (difficulty.score >= 10000) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQBA");
+
+            //perfect
+            if (difficulty.getMultiplier() >= 50) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQBQ");
+
+            //imagod
+            if (resurrects >= 9) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQBg");
         }
 
         batch.end();
@@ -383,18 +405,19 @@ public class World {
         textEffects.draw(batch);
         menu.draw(batch);
 
-        if (menu.showHighscores) {
-            bitmapFont.setScale(1);
-            int tempY = 350;
-            int tempX = 1;
-            for (int i = 0; i < Settings.highscores.length; i++) {
-                bitmapFont.draw(batch, tempX + ") " + Settings.highscores[i], 10, tempY);
-                tempY -= 50;
-                tempX++;
-            }
-        }
+//        if (menu.showHighscores) {
+//            bitmapFont.setScale(1);
+//            int tempY = 350;
+//            int tempX = 1;
+//            for (int i = 0; i < Settings.highscores.length; i++) {
+//                bitmapFont.draw(batch, tempX + ") " + Settings.highscores[i], 10, tempY);
+//                tempY -= 50;
+//                tempX++;
+//            }
+//        }
 
-        batch.end();
+        if (batch.isDrawing())
+            batch.end();
 
         if (state == GAMEOVER) {
             stage.draw();

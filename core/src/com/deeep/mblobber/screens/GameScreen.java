@@ -32,7 +32,7 @@ public class GameScreen implements Screen {
     public void show() {
 //        logger = Logger.getInstance();
         batch = Core.batch;
-        world = new World();
+        world = new World(game);
 
         Gdx.input.setInputProcessor(new GameInputProcessor(this));
 
@@ -41,9 +41,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        if (world != null) {
-
-        }
     }
 
     @Override

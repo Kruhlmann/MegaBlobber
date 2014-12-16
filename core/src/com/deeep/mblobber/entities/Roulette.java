@@ -41,18 +41,19 @@ public class Roulette {
         sprites[7] = new Sprite(Assets.getAssets().getRegion("shockwave"));
         sprites[8] = new Sprite(Assets.getAssets().getRegion("speedUp"));
         sprites[9] = new Sprite(Assets.getAssets().getRegion("freeze"));
-        Random random= new Random();
+        Random random = new Random();
 
         for (int i = 0; i < 10; i++) {
             sprites[i].setScale(0.5f);
-        }for (int i = 1; i < 5; i++) {
+        }
+        for (int i = 1; i < 5; i++) {
             shown[i - 1] = shown[i];
         }
         int temp = random.nextInt(10);
         while (contains(shown, temp)) {
             temp = random.nextInt(10);
         }
-        for(int i = 0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             sprites[shown[i]].setScale(0.25f);
             sprites[shown[i]].setColor(color);
         }
@@ -88,14 +89,14 @@ public class Roulette {
         if (turnTimer >= 1) {
 
             turnTimer -= 1;
-                for (int i = 1; i < 5; i++) {
-                    shown[i - 1] = shown[i];
-                }
-                int temp = random.nextInt(10);
-                while (contains(shown, temp)) {
-                    temp = random.nextInt(10);
-                }
-                shown[4] = temp;
+            for (int i = 1; i < 5; i++) {
+                shown[i - 1] = shown[i];
+            }
+            int temp = random.nextInt(10);
+            while (contains(shown, temp)) {
+                temp = random.nextInt(10);
+            }
+            shown[4] = temp;
         }
 
         for (int i = 0; i < 5; i++) {
@@ -104,28 +105,28 @@ public class Roulette {
             color.g = 1;
             sprites[shown[i]].setColor(color);
             sprites[shown[i]].setScale(0.25f);
-                if (i == 2) {
-                    if (increaseAmount == 0) {
-                        if (gotResult < 2) {
-                            if (((int) (gotResult / 0.2f) % 2) == 1) {
-                                if (shown[i] > 6) {
-                                    color.r = 1;
-                                    color.g = 0.5f;
-                                    color.b = 0.5f;
-                                } else {
-                                    color.r = 0.5f;
-                                    color.g = 1f;
-                                    color.b = 0.5f;
-                                }
+            if (i == 2) {
+                if (increaseAmount == 0) {
+                    if (gotResult < 2) {
+                        if (((int) (gotResult / 0.2f) % 2) == 1) {
+                            if (shown[i] > 6) {
+                                color.r = 1;
+                                color.g = 0.5f;
+                                color.b = 0.5f;
+                            } else {
+                                color.r = 0.5f;
+                                color.g = 1f;
+                                color.b = 0.5f;
                             }
                         }
                     }
-                    sprites[shown[i]].setScale(0.5f);
-                    sprites[shown[i]].setColor(color);
                 }
+                sprites[shown[i]].setScale(0.5f);
+                sprites[shown[i]].setColor(color);
+            }
 
         }
-        if(world.difficulty.maxEnemiesAlive>0) {
+        if (world.difficulty.maxEnemiesAlive > 0) {
             sprites[shown[0]].setCenter((float) (256 - sprites[0].getWidth() * 0.25 - sprites[0].getWidth() * 0.4), 15);
             sprites[shown[1]].setCenter((float) (256 - sprites[0].getWidth() * 0.4), 15);
             sprites[shown[2]].setCenter(256, 25);
@@ -167,6 +168,7 @@ public class Roulette {
             case 0:
                 //angel
                 globe.angelBlock += 3;
+                World.resurrects++;
                 switch (soundRandomizer) {
                     case 1:
                         Assets.getAssets().angel_power1.play();

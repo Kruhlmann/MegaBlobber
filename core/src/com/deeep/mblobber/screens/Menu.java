@@ -15,16 +15,18 @@ import java.util.Random;
  * Created by E on 12/7/2014.
  */
 public class Menu {
+    private Core game;
     public World world;
     public boolean show = true;
-    public boolean showHighscores = false;
+    //    public boolean showHighscores = false;
     BitmapFont bitmapFont;
     MenuOption menuOption;
     private float menuEffect = 0;
     private boolean doneEffect = false;
     private boolean doingEffect = false;
 
-    public Menu(World world) {
+    public Menu(World world, Core game) {
+        this.game = game;
         this.world = world;
         bitmapFont = Assets.getAssets().getBitmapFont();
         menuOption = new MenuOption("PLAY");
@@ -40,16 +42,16 @@ public class Menu {
         String text;
         Letter[] play;
         Letter[] about;
-        Letter[] highScores;
-        Letter[] quite;
+        Letter[] leaderboards;
+        Letter[] achievements;
         Letter[] selected;
         float freezeMouse = 0;
 
         public MenuOption(String text) {
             play = setUp(play, "play", 0);
             about = setUp(about, "about", 6);
-            quite = setUp(quite, "quit", 13);
-            highScores = setUp(highScores, "scores", 19);
+            achievements = setUp(achievements, "achi", 13);
+            leaderboards = setUp(leaderboards, "scores", 19);
 
         }
 
@@ -69,14 +71,14 @@ public class Menu {
         public void draw(BitmapFont bitmapFont, SpriteBatch spriteBatch) {
             float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * Gdx.input.getX();
             float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * Gdx.input.getY();
-            float rotation = (float)  (Math.atan2(World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2, mouseX - World.VIRTUAL_WIDTH / 2));
+            float rotation = (float) (Math.atan2(World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2, mouseX - World.VIRTUAL_WIDTH / 2));
             //float rotation = (float) Math.atan2(512 - Gdx.input.getY() - 256, Gdx.input.getX() - 256);
             if (freezeMouse != 0) {
                 rotation = freezeMouse;
             }
             draw(spriteBatch, play, rotation);
-            draw(spriteBatch, quite, rotation);
-            draw(spriteBatch, highScores, rotation);
+            draw(spriteBatch, achievements, rotation);
+            draw(spriteBatch, leaderboards, rotation);
             draw(spriteBatch, about, rotation);
             if (!doingEffect) {
                 boolean temp = true;
@@ -92,7 +94,7 @@ public class Menu {
                     doingEffect = true;
                     world.difficulty.maxEnemiesAlive++;
                     Random random = new Random();
-                    switch (random.nextInt(2) + 1){
+                    switch (random.nextInt(2) + 1) {
                         case 1:
                             Assets.getAssets().start1.play();
                             break;
@@ -106,25 +108,25 @@ public class Menu {
                     return;
                 }
                 temp = true;
-                for (Letter letter : quite) {
+                for (Letter letter : achievements) {
                     if (letter.redTimer > 0) {
                         temp = false;
                     }
                 }
                 if (temp) {
                     freezeMouse = rotation;
-                    selected = quite;
+                    selected = achievements;
                     doingEffect = true;
                 }
                 temp = true;
-                for (Letter letter : highScores) {
+                for (Letter letter : leaderboards) {
                     if (letter.redTimer > 0) {
                         temp = false;
                     }
                 }
                 if (temp) {
                     freezeMouse = rotation;
-                    selected = highScores;
+                    selected = leaderboards;
                     doingEffect = true;
                 }
                 temp = true;
@@ -146,10 +148,12 @@ public class Menu {
                 else if (selected == about) {
                     Gdx.net.openURI("http://deeepgames.com/about");
                     world.instantiate();
-                } else if (selected == quite) {
-                    Gdx.app.exit();
-                } else if (selected == highScores) {
-                    showHighscores = true;
+                } else if (selected == achievements) {
+                    game.actionResolver.getAchievementsGPGS();
+                    world.instantiate();
+                } else if (selected == leaderboards) {
+                    game.actionResolver.getLeaderboardGPGS();
+                    world.instantiate();
                 }
             }
             if (doingEffect) {
@@ -157,11 +161,11 @@ public class Menu {
                 if (play != selected) {
                     moveToFinnish(play, rotation);
                 }
-                if (quite != selected) {
-                    moveToFinnish(quite, rotation);
+                if (achievements != selected) {
+                    moveToFinnish(achievements, rotation);
                 }
-                if (highScores != selected) {
-                    moveToFinnish(highScores, rotation);
+                if (leaderboards != selected) {
+                    moveToFinnish(leaderboards, rotation);
                 }
                 if (about != selected) {
                     moveToFinnish(about, rotation);
