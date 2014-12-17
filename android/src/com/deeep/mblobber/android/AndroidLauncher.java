@@ -64,7 +64,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
     @Override
     public void submitScoreGPGS(int score) {
         if (gameHelper.isSignedIn())
-            Games.Leaderboards.submitScore(gameHelper.getApiClient(), /*leaderboard id*/ "CgkImYvC7YcLEAIQBg", score);
+            Games.Leaderboards.submitScore(gameHelper.getApiClient(), /*leaderboard id*/ "CgkIg-mJkIMHEAIQBw", score);
         else if (!gameHelper.isConnecting())
             loginGPGS();
     }
@@ -78,7 +78,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
     @Override
     public void getLeaderboardGPGS() {
         if (gameHelper.isSignedIn())
-            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(), /*leaderboard id*/ "CgkImYvC7YcLEAIQBg"), 100);
+            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(), /*leaderboard id*/ "CgkIg-mJkIMHEAIQBw"), 100);
         else if (!gameHelper.isConnecting())
             loginGPGS();
     }
