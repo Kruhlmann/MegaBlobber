@@ -26,8 +26,8 @@
         jar="D:\WorkSpaces\DeeepGames\LudumDare31\core\build\libs\core-1.0.jar"
         jumboMode="false"
         revision="21.1.1"
-        sha1="530e5be143cc8c99bf9f5052fcd9beff4b74c832">
-        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\debug\core-1.0-b2a529d448ddc2832dfe440e10c18c2316fbf491.jar" />
+        sha1="3cd56dea989cbfe7a34eb4b977f864ac4c2f8ab1">
+        <dex dex="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\pre-dexed\release\core-1.0-b2a529d448ddc2832dfe440e10c18c2316fbf491.jar" />
     </item>
     <item
         jar="D:\WorkSpaces\DeeepGames\LudumDare31\android\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"

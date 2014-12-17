@@ -46,6 +46,8 @@ public class Assets {
     private Pixmap pixmap;
     private Pixmap kappaPixmap;
 
+    private Music music;
+
     public Sound pointsGained;
     public Sound incorrect;
     public Sound power, pling;
@@ -59,6 +61,7 @@ public class Assets {
      * Find a use for this, if there is any TODO
      */
     public Assets() {
+        loaded = false;
     }
 
     /**
@@ -92,9 +95,8 @@ public class Assets {
             kappaPixmap = new Pixmap(Gdx.files.internal("kappa.png"));
             textureAtlas = new TextureAtlas(Gdx.files.internal("TextureAtlas.txt"));
 //            logger.system(Assets.class, "All assets have been loaded");
-            loaded = true;
-
             loadSounds();
+            loaded = true;
         }
     }
 
@@ -104,7 +106,7 @@ public class Assets {
         incorrect = Gdx.audio.newSound(Gdx.files.internal("sound/knack.mp3"));
         power = Gdx.audio.newSound(Gdx.files.internal("sound/blob.mp3"));
         menu = Gdx.audio.newSound(Gdx.files.internal("sound/menu.wav"));
-        Music music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
         music.play();
         music.setLooping(true);
         pling = Gdx.audio.newSound(Gdx.files.internal("sound/pling.mp3"));
@@ -187,11 +189,84 @@ public class Assets {
      * Dispose function. should ALWAYS be called. This will get rid of the texture atlas
      */
     public void dispose() {
+        assets = null;
+
         if (pixmap != null)
             pixmap.dispose();
         if (textureAtlas != null)
             textureAtlas.dispose();
 //        logger.system(Assets.class, "All assets have been disposed");
+
+        music.dispose();
+        pointsGained.dispose();
+        incorrect.dispose();
+        power.dispose();
+        menu.dispose();
+        pling.dispose();
+        ice.dispose();
+        start1.dispose();
+        game_over1.dispose();
+        new_highscore1.dispose();
+        quit1.dispose();
+        easy1.dispose();
+        keep_it_up1.dispose();
+        well_done1.dispose();
+        nice_going1.dispose();
+        wow1.dispose();
+        amazing1.dispose();
+        incredible1.dispose();
+        oh_my_god1.dispose();
+        multiplier_loss1.dispose();
+        angel_power1.dispose();
+        protection1.dispose();
+        points1.dispose();
+        hasta1.dispose();
+        healpower1.dispose();
+        blow1.dispose();
+        speed_slow1.dispose();
+        speed_fast1.dispose();
+        start2.dispose();
+        game_over2.dispose();
+        new_highscore2.dispose();
+        quit2.dispose();
+        easy2.dispose();
+        keep_it_up2.dispose();
+        well_done2.dispose();
+        nice_going2.dispose();
+        wow2.dispose();
+        amazing2.dispose();
+        incredible2.dispose();
+        oh_my_god2.dispose();
+        multiplier_loss2.dispose();
+        angel_power2.dispose();
+        protection2.dispose();
+        points2.dispose();
+        hasta2.dispose();
+        healpower2.dispose();
+        blow2.dispose();
+        speed_slow2.dispose();
+        speed_fast2.dispose();
+        start3.dispose();
+        game_over3.dispose();
+        new_highscore3.dispose();
+        quit3.dispose();
+        easy3.dispose();
+        keep_it_up3.dispose();
+        well_done3.dispose();
+        nice_going3.dispose();
+        wow3.dispose();
+        amazing3.dispose();
+        incredible3.dispose();
+        oh_my_god3.dispose();
+        multiplier_loss3.dispose();
+        angel_power3.dispose();
+        protection3.dispose();
+        points3.dispose();
+        hasta3.dispose();
+        healpower3.dispose();
+        blow3.dispose();
+        speed_slow3.dispose();
+        speed_fast3.dispose();
     }
 
     /**
