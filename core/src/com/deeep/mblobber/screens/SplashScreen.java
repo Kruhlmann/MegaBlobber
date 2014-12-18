@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.deeep.mblobber.entities.SplashActor;
 
@@ -23,7 +24,7 @@ public class SplashScreen implements Screen {
     public SplashScreen() {
         game = (Core) Gdx.app.getApplicationListener();
 
-        stage = new Stage(new StretchViewport(AbstractGame.VIRTUAL_WIDTH, AbstractGame.VIRTUAL_HEIGHT), Core.batch);
+        stage = new Stage(new FitViewport(AbstractGame.VIRTUAL_WIDTH, AbstractGame.VIRTUAL_HEIGHT), Core.batch);
 
         Gdx.input.setInputProcessor(stage);
 

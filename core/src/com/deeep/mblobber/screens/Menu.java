@@ -49,20 +49,20 @@ public class Menu {
 
         public MenuOption(String text) {
             play = setUp(play, "play", 0);
-            about = setUp(about, "about", 6);
-            achievements = setUp(achievements, "achi", 13);
+            about = setUp(about, "about", 5);
+            achievements = setUp(achievements, "efforts", 11);
             leaderboards = setUp(leaderboards, "scores", 19);
 
         }
 
         public Letter[] setUp(Letter[] toSetUp, String text, int index) {
             toSetUp = new Letter[text.length()];
-            double startRotation = ((2 * Math.PI) / 27);
-            double rotationPerLetter = (2 * Math.PI) / 27;
+            double startRotation = ((2 * Math.PI) / 26);
+            double rotationPerLetter = (2 * Math.PI) / 26;
             for (int i = 0, l = text.length(); i < l; i++) {
                 toSetUp[i] = new Letter(text.charAt(i), (float) (startRotation - rotationPerLetter * (i + index)));
-                toSetUp[i].x = (float) Math.cos(startRotation - rotationPerLetter * (i + index)) * 50 + 256;
-                toSetUp[i].y = (float) Math.sin(startRotation - rotationPerLetter * (i + index)) * 50 + 256;
+                toSetUp[i].x = (float) Math.cos(startRotation - rotationPerLetter * (i + index)) * 70 + 256;
+                toSetUp[i].y = (float) Math.sin(startRotation - rotationPerLetter * (i + index)) * 70 + 256;
                 toSetUp[i].index = index;
             }
             return toSetUp;
@@ -187,8 +187,8 @@ public class Menu {
 
         public void draw(SpriteBatch spriteBatch, Letter[] toDraw, float mouseAngle) {
             for (int i = 0; i < toDraw.length; i++) {
-                toDraw[i].x = (float) Math.cos(toDraw[i].ownRotation + mouseAngle) * 50 + 256;
-                toDraw[i].y = (float) Math.sin(toDraw[i].ownRotation + mouseAngle) * 50 + 256;
+                toDraw[i].x = (float) Math.cos(toDraw[i].ownRotation + mouseAngle) * 60 + 256;
+                toDraw[i].y = (float) Math.sin(toDraw[i].ownRotation + mouseAngle) * 60 + 256;
                 toDraw[i].draw(spriteBatch, mouseAngle);
             }
         }
