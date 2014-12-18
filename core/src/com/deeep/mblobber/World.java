@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 /**
  * Created by Andreas on 05/12/2014.
  */
-public class World {
+public class World extends Actor {
     private Core game;
 
     public static final float VIRTUAL_WIDTH = 512;
@@ -311,27 +313,34 @@ public class World {
 //        Settings.save();
     }
 
-    public void draw(SpriteBatch batch) {
-        sR.setProjectionMatrix(batch.getProjectionMatrix());
-        sR.setTransformMatrix(batch.getTransformMatrix());
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        Color color = new Color(getColor().r, getColor().g,
+                getColor().b, getColor().a * parentAlpha);
+
+        batch.setColor(color);
+
         Gdx.graphics.getGL20().glClearColor(0, 0, 0, 1);
         Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        batch.end();
+
         sR.begin(ShapeRenderer.ShapeType.Filled);
         sR.setColor(Color.BLACK);
         sR.rect(0, 0, 512, 512);
-        space.draw(batch, sR);
+        space.draw((SpriteBatch) batch, sR);
         sR.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
         if (!batch.isDrawing())
             batch.begin();
 
-        globe.draw(batch);
+        globe.draw((SpriteBatch) batch);
 
         if (state == PLAYING) {
-            roulette.draw(batch);
+            roulette.draw((SpriteBatch) batch);
 
             bitmapFont.setScale(1);
             bitmapFont.draw(batch, "Score: " + difficulty.score, 10, 512 - 5);
@@ -358,20 +367,24 @@ public class World {
         batch.end();
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        sR.setProjectionMatrix(batch.getProjectionMatrix());
+        sR.setTransformMatrix(batch.getTransformMatrix());
+        sR.translate(getX(), getY(), 0);
         sR.setAutoShapeType(true);
         sR.begin();
         sR.setColor(Color.YELLOW);
         for (int i = 0; i < globe.angelBlock; i++) {
             sR.circle(256, 256, 70 + i);
         }
-        Color color = new Color(0.9f, 0.4f, 0.2f, 1);
+        Color _color = new Color(0.9f, 0.4f, 0.2f, 1);
         for (Circle circle : circles) {
             for (int i = 0; i < 12; i++) {
-                color.a = 1 - ((float) i / 12);
-                color.r = 0.9f + color.a / 10;
-                color.g = 0.4f + color.a / 10;
-                color.b = 0.2f + color.a / 10;
-                sR.setColor(color);
+                _color.a = 1 - ((float) i / 12);
+                _color.r = 0.9f + _color.a / 10;
+                _color.g = 0.4f + _color.a / 10;
+                _color.b = 0.2f + _color.a / 10;
+                sR.setColor(_color);
                 sR.circle(circle.x, circle.y, circle.radius - i);
             }
         }
@@ -379,9 +392,10 @@ public class World {
         sR.begin(ShapeRenderer.ShapeType.Filled);
         blobManager.draw();
         sR.end();
+
         Gdx.gl.glDisable(GL20.GL_BLEND);
         batch.begin();
-        powerBlobManager.draw(batch);
+        powerBlobManager.draw((SpriteBatch) batch);
         if (damageTimer > 0) {
             damageTimer--;
             warningOverlay.setAlpha(damageTimer * 0.001F);
@@ -402,8 +416,8 @@ public class World {
             explosionOverlay.setAlpha(explosionTimer * 0.004F);
             explosionOverlay.draw(batch);
         }
-        textEffects.draw(batch);
-        menu.draw(batch);
+        textEffects.draw((SpriteBatch) batch);
+        menu.draw((SpriteBatch) batch);
 
 //        if (menu.showHighscores) {
 //            bitmapFont.setScale(1);
@@ -416,13 +430,14 @@ public class World {
 //            }
 //        }
 
-        if (batch.isDrawing())
-            batch.end();
+//        if (batch.isDrawing())
+//            batch.end();
 
         if (state == GAMEOVER) {
             stage.draw();
         }
-        //
+
+        if (!batch.isDrawing()) batch.begin();
     }
 
     /**
