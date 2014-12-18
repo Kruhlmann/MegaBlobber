@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.deeep.mblobber.entities.SplashActor;
@@ -74,8 +75,8 @@ public class SplashScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        splashSprite.setPosition(AbstractGame.VIRTUAL_WIDTH / 2, AbstractGame.VIRTUAL_HEIGHT / 2);
-        splashSprite.setSize(AbstractGame.VIRTUAL_WIDTH, AbstractGame.VIRTUAL_HEIGHT);
+        //splashSprite.setPosition(AbstractGame.VIRTUAL_WIDTH / 2, AbstractGame.VIRTUAL_HEIGHT / 2);
+        //splashSprite.setSize(AbstractGame.VIRTUAL_WIDTH, AbstractGame.VIRTUAL_HEIGHT);
     }
 
     @Override

@@ -245,7 +245,7 @@ public class Menu {
                     previousShown = true;
                     color.b = redTimer;
                     color.g = redTimer;
-                    if (rotation > 225 && rotation < 315) {
+                    if (rotation > 215 && rotation < 325) {
                         if (redTimer > 0.1)
                             redTimer -= Gdx.graphics.getDeltaTime() * 0.5;
                         else {
