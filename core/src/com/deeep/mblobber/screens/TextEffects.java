@@ -35,7 +35,6 @@ public class TextEffects {
         }
         if (growing) {
             alpha = 1 - time / 1;
-            System.out.println(alpha);
             color.a = alpha;
             color.r = 1;
             color.g = 1;
@@ -46,7 +45,7 @@ public class TextEffects {
             bitmapFont.scale(scale);
             float x = bitmapFont.getBounds(text).width / 2;
             float y = (bitmapFont.getBounds(text).height) / 2;
-            bitmapFont.draw(spriteBatch, text, World.VIRTUAL_WIDTH / 2 - x, (World.VIRTUAL_HEIGHT / 2) + y);
+            bitmapFont.draw(spriteBatch, text, Gdx.graphics.getWidth()/2 - x, Gdx.graphics.getHeight()/2 + y);
             color.a = 1;
             bitmapFont.setColor(color);
             if (alpha <= 0.1f) {

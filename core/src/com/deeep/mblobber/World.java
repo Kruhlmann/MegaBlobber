@@ -55,7 +55,7 @@ public class World extends Actor {
     PowerBlobManager powerBlobManager;
 
     private Roulette roulette;
-    private BitmapFont bitmapFont;
+
     private float backgroundRotation;
     private ArrayList<Circle> circles = new ArrayList<Circle>();
     private Menu menu;
@@ -67,7 +67,7 @@ public class World extends Actor {
     private String gamesOverText, scoreLabelText, scoreText;
     private TextButton.TextButtonStyle style;
 
-    public TextEffects textEffects;
+
 
     public static int resurrects;
 
@@ -83,8 +83,8 @@ public class World extends Actor {
 
     public void instantiate() {
         Assets.getAssets().loadBitmapFont();
-        textEffects = new TextEffects();
-        bitmapFont = Assets.getAssets().getBitmapFont();
+
+
         menu = new Menu(this, game);
         difficulty = new Difficulty();
         globe = new Globe();
@@ -303,7 +303,7 @@ public class World extends Actor {
     private void gameOver() {
         state = GAMEOVER;
         /** Prepare game over gamesOverText */
-        bitmapFont.setScale(1);
+
 
         resetText();
         prepareDrop();
@@ -324,12 +324,6 @@ public class World extends Actor {
 
         batch.end();
 
-        //sR.begin(ShapeRenderer.ShapeType.Filled);
-        //sR.setColor(Color.BLACK);
-        //sR.rect(0, 0, 512, 512);
-//
-        //sR.end();
-
 
         if (!batch.isDrawing())
             batch.begin();
@@ -339,13 +333,7 @@ public class World extends Actor {
         if (state == PLAYING) {
             roulette.draw((SpriteBatch) batch);
 
-            bitmapFont.setScale(1);
-            bitmapFont.draw(batch, "Score: " + difficulty.score, 10, 512 - 5);
-            int tempY = (int) bitmapFont.getLineHeight();
-            bitmapFont.setScale(0.5f);
-            bitmapFont.draw(batch, "Multiplier: " + difficulty.getMultiplier() + "x", 10, 512 - 10 - tempY + bitmapFont.getLineHeight());
-            bitmapFont.setScale(0.4f);
-            bitmapFont.draw(batch, "" + difficulty.consecutive, 512 - 25, 512 - 25);
+
 
             //points for breakfast
             if (difficulty.score >= 5000) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQAg");
@@ -413,7 +401,7 @@ public class World extends Actor {
             explosionOverlay.setAlpha(explosionTimer * 0.004F);
             explosionOverlay.draw(batch);
         }
-        textEffects.draw((SpriteBatch) batch);
+
         menu.draw((SpriteBatch) batch);
 
 //        if (menu.showHighscores) {
