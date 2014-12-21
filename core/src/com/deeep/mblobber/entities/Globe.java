@@ -51,6 +51,7 @@ public class Globe extends Entity {
     public Globe() {
         globeImage = new GlobeImage(planetSize, 0.25f);
         globeImage.addRegion(Color.RED);
+        globeImage.addRegion(Color.BLUE);
         armorSprite = new Sprite(new Texture(Gdx.files.internal("shield.png")));
         armorSprite.setCenter(256, 256);
     }

@@ -9,7 +9,9 @@ import com.deeep.mblobber.screens.GameScreen;
  * Created by scanevaro on 06/12/2014.
  */
 public class GameInputProcessor implements InputProcessor {
-
+    private boolean touched;
+    private float pressedRotation;
+    private float worldRotation;
     private GameScreen screen;
     private int screenX;
     private int screenY;
@@ -35,7 +37,13 @@ public class GameInputProcessor implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+        if (screen.world.state == World.GAMEOVER) return false;
+        float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
+        float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
+        pressedRotation = (float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) ) ;
+        worldRotation = screen.world.globe.getAngleFacing();
+        System.out.println(pressedRotation);
+        return true;
     }
 
     @Override
@@ -49,7 +57,8 @@ public class GameInputProcessor implements InputProcessor {
         if (screen.world.state == World.GAMEOVER) return false;
         float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
         float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
-        screen.world.globe.setAngleFacing((float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) * -1));
+        float current = (float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) );
+        screen.world.globe.setAngleFacing(worldRotation + (pressedRotation - current)*2);
 
         this.screenX = screenX;
         this.screenY = screenY;
@@ -62,7 +71,7 @@ public class GameInputProcessor implements InputProcessor {
         if (screen.world.state == World.GAMEOVER) return false;
         float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
         float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
-        screen.world.globe.setAngleFacing((float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) * -1));
+        //screen.world.globe.setAngleFacing((float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) * -1));
 
 
         this.screenX = screenX;
