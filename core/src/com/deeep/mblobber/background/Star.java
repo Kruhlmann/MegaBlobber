@@ -1,5 +1,6 @@
 package com.deeep.mblobber.background;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.deeep.mblobber.entities.Entity;
@@ -14,8 +15,8 @@ public class Star extends Entity {
     float alpha = 0;
 
     public Star(int distance, double angle, float initial, float speed, boolean up) {
-        this.x = (float) (Math.cos(angle) * distance) + 256;
-        this.y = (float) (Math.sin(angle) * distance) + 256;
+        this.x = (float) (Math.cos(angle) * distance) + Gdx.graphics.getWidth()/2;
+        this.y = (float) (Math.sin(angle) * distance) + Gdx.graphics.getHeight()/2;
         this.alpha = initial;
         this.increment = up;
         this.incrementSpeed = speed;

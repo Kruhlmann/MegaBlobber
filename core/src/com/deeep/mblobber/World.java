@@ -53,7 +53,7 @@ public class World extends Actor {
     public Sprite explosionOverlay;
     public int state;
     PowerBlobManager powerBlobManager;
-    private Space space;
+
     private Roulette roulette;
     private BitmapFont bitmapFont;
     private float backgroundRotation;
@@ -99,7 +99,7 @@ public class World extends Actor {
         background.setY(-110F);
         background.setRotation(90F);
         damageTimer = 0;
-        space = new Space(500);
+
         difficulty.spawn(globe, blobManager);
         roulette = new Roulette(this, globe);
 
@@ -220,7 +220,7 @@ public class World extends Actor {
         stage.act();
         switch (state) {
             case PLAYING:
-                space.update(deltaT);
+
                 globe.update(deltaT);
                 blobManager.update(deltaT);
                 ArrayList<Circle> remove = new ArrayList<Circle>();
@@ -320,19 +320,16 @@ public class World extends Actor {
 
         batch.setColor(color);
 
-        Gdx.graphics.getGL20().glClearColor(0, 0, 0, 1);
-        Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-        Gdx.gl.glEnable(GL20.GL_BLEND);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
 
         batch.end();
 
-        sR.begin(ShapeRenderer.ShapeType.Filled);
-        sR.setColor(Color.BLACK);
-        sR.rect(0, 0, 512, 512);
-        space.draw((SpriteBatch) batch, sR);
-        sR.end();
-        Gdx.gl.glDisable(GL20.GL_BLEND);
+        //sR.begin(ShapeRenderer.ShapeType.Filled);
+        //sR.setColor(Color.BLACK);
+        //sR.rect(0, 0, 512, 512);
+//
+        //sR.end();
+
 
         if (!batch.isDrawing())
             batch.begin();
@@ -430,8 +427,8 @@ public class World extends Actor {
 //            }
 //        }
 
-//        if (batch.isDrawing())
-//            batch.end();
+        if (batch.isDrawing())
+            batch.end();
 
         if (state == GAMEOVER) {
             stage.draw();

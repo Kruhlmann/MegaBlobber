@@ -1,7 +1,9 @@
 package com.deeep.mblobber.background;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.deeep.mblobber.screens.GameScreen;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,8 +16,11 @@ public class Space {
     private float rotation;
     public Space(int starNumber) {
         Random random = new Random();
+        int width = Gdx.graphics.getWidth();
+        int height= Gdx.graphics.getHeight();
+        double distance = Math.sqrt(width * width + height* height);
         for (int i = 0; i < starNumber; i++) {
-            stars.add(new Star(random.nextInt(368), random.nextDouble() * Math.PI * 2, random.nextFloat(), 0.5f * random.nextFloat() + 0.5f, random.nextBoolean()));
+            stars.add(new Star(random.nextInt((int) distance/2), random.nextDouble() * Math.PI * 2, random.nextFloat(), 0.5f * random.nextFloat() + 0.5f, random.nextBoolean()));
         }
     }
 
