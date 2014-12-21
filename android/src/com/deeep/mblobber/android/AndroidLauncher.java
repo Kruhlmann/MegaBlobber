@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.deeep.mblobber.Interfaces.ActionResolver;
+import com.deeep.mblobber.Settings;
 import com.deeep.mblobber.screens.Core;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
@@ -16,6 +17,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+        Settings.android = true;
         initialize(new Core(this), config);
 
         if (gameHelper == null) {
