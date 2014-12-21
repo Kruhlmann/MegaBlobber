@@ -42,7 +42,7 @@ public class GameScreen implements Screen {
         shapeRenderer.setProjectionMatrix(hudStage.getCamera().combined);
         shapeRenderer.setColor(Color.WHITE);
         Gdx.gl.glDisable(GL20.GL_BLEND);
-        space.draw( hudBatch, shapeRenderer);
+        space.draw(hudBatch, shapeRenderer);
         shapeRenderer.end();
         batch.setProjectionMatrix(stage.getCamera().combined);
         /** updates */
@@ -50,8 +50,10 @@ public class GameScreen implements Screen {
 
         /** draws */
 //        world.draw(batch);
+        Gdx.gl.glViewport(stage.getViewport().getScreenX(), stage.getViewport().getScreenY(), stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
         stage.draw();
         hudStage.act();
+        Gdx.gl.glViewport(hudStage.getViewport().getScreenX(), hudStage.getViewport().getScreenY(), hudStage.getViewport().getScreenWidth(), hudStage.getViewport().getScreenHeight());
         hudStage.draw();
 
     }
@@ -75,9 +77,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        hudStage.getViewport().update(width, height);
-        stage.getViewport().update(width, height);
-        //hudStage.getViewport().update(width, height);
+        hudStage.getViewport().update(width, height, true);
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
