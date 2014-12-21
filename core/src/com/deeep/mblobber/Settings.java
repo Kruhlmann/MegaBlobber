@@ -10,7 +10,7 @@ public class Settings {
     public static boolean soundEnabled = true;
     //    public final static int[] highscores = new int[]{100, 80, 50, 30, 10};
     public final static String file = ".ludumDare";
-
+    public static boolean android = false;
     public static void load() {
         try {
             FileHandle filehandle = Gdx.files.external(file);

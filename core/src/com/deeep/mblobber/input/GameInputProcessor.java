@@ -2,6 +2,7 @@ package com.deeep.mblobber.input;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.deeep.mblobber.Settings;
 import com.deeep.mblobber.World;
 import com.deeep.mblobber.screens.GameScreen;
 
@@ -37,6 +38,7 @@ public class GameInputProcessor implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if(!Settings.android) return false;
         if (screen.world.state == World.GAMEOVER) return false;
         float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
         float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
@@ -53,7 +55,7 @@ public class GameInputProcessor implements InputProcessor {
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-
+        if(!Settings.android) return false;
         if (screen.world.state == World.GAMEOVER) return false;
         float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
         float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
@@ -68,10 +70,11 @@ public class GameInputProcessor implements InputProcessor {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
+        if(Settings.android) return false;
         if (screen.world.state == World.GAMEOVER) return false;
         float mouseX = (World.VIRTUAL_WIDTH / Gdx.graphics.getWidth()) * screenX;
         float mouseY = (World.VIRTUAL_HEIGHT / Gdx.graphics.getHeight()) * screenY;
-        //screen.world.globe.setAngleFacing((float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) * -1));
+        screen.world.globe.setAngleFacing((float) (Math.atan2(mouseX - World.VIRTUAL_WIDTH / 2, World.VIRTUAL_HEIGHT - mouseY - World.VIRTUAL_HEIGHT / 2) * -1));
 
 
         this.screenX = screenX;
