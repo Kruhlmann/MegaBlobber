@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.deeep.mblobber.World;
 import com.deeep.mblobber.background.Space;
 import com.deeep.mblobber.input.GameInputProcessor;
@@ -66,7 +66,7 @@ public class GameScreen implements Screen {
         batch = Core.batch;
         hudBatch = new SpriteBatch();
         stage = new Stage(new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT), batch);
-        hudStage = new Stage(new ScreenViewport(), hudBatch);
+        hudStage = new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()), hudBatch);
         world = new World(game);
         stage.addActor(world);
 
