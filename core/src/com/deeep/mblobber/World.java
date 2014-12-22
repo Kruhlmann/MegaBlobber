@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -17,12 +16,10 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.FloatArray;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.deeep.mblobber.background.Space;
 import com.deeep.mblobber.entities.*;
 import com.deeep.mblobber.input.Assets;
 import com.deeep.mblobber.screens.Core;
 import com.deeep.mblobber.screens.Menu;
-import com.deeep.mblobber.screens.TextEffects;
 
 import java.util.ArrayList;
 
@@ -66,7 +63,6 @@ public class World extends Actor {
     private FloatArray post1, advances1, post2, advances2, post3, advances3;
     private String gamesOverText, scoreLabelText, scoreText;
     private TextButton.TextButtonStyle style;
-
 
 
     public static int resurrects;
@@ -321,7 +317,6 @@ public class World extends Actor {
         batch.setColor(color);
 
 
-
         batch.end();
 
 
@@ -334,17 +329,14 @@ public class World extends Actor {
             roulette.draw((SpriteBatch) batch);
 
 
-
             //points for breakfast
             if (difficulty.score >= 5000) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQAg");
-                //the more points the merrier
-            else if (difficulty.score >= 7500) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQAw");
-                //Points maniac
-            else if (difficulty.score >= 10000) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQBA");
-
+            //the more points the merrier
+            if (difficulty.score >= 7500) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQAw");
+            //Points maniac
+            if (difficulty.score >= 10000) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQBA");
             //perfect
             if (difficulty.getMultiplier() >= 50) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQBQ");
-
             //imagod
             if (resurrects >= 9) game.actionResolver.unlockAchievementGPGS("CgkIg-mJkIMHEAIQBg");
         }
