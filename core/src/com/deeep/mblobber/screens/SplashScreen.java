@@ -36,6 +36,10 @@ public class SplashScreen implements Screen {
     private float startX, endX;
     private float percent;
 
+    public SplashScreen(Core game) {
+        this.game = game;
+    }
+
     private void setActors() {
         splashSprite = new SplashActor();
     }
@@ -111,8 +115,6 @@ public class SplashScreen implements Screen {
 
     @Override
     public void show() {
-        game = (Core) Gdx.app.getApplicationListener();
-
         stage = new Stage(new FitViewport(AbstractGame.VIRTUAL_WIDTH, AbstractGame.VIRTUAL_HEIGHT), Core.batch);
 
         Gdx.input.setInputProcessor(stage);

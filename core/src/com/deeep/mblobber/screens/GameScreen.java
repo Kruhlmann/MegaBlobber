@@ -92,7 +92,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
         stage.getViewport().update(width, height, true);
         hudStage = new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()), hudBatch);
         space = new Space(400);
