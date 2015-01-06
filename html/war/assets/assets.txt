@@ -2,6 +2,8 @@ d:war/:0:application/unknown
 i:background.png:621567:image/png
 i:badlogic.jpg:68465:image/jpeg
 d:data:0:application/unknown
+t:data/loading.pack:1286:application/unknown
+i:data/loading.png:59042:image/png
 t:data/newLogo.pack:1785:application/unknown
 i:data/newLogo.png:207594:image/png
 i:explosion_overlay.png:1200:image/png
