@@ -1,18 +1,31 @@
 package com.deeep.mblobber.client;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.deeep.mblobber.screens.AbstractGame;
-import com.deeep.mblobber.screens.Core;
+import com.deeep.mblobber.Core;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 
 public class HtmlLauncher extends GwtApplication {
 
     @Override
+    public void onModuleLoad() {
+        super.onModuleLoad();
+        com.google.gwt.user.client.Window.addResizeHandler(new ResizeHandler() {
+            public void onResize(ResizeEvent ev) {
+                Gdx.graphics.setDisplayMode(ev.getWidth(), ev.getHeight(), false);
+            }
+        });
+    }
+
+    @Override
     public GwtApplicationConfiguration getConfig() {
-        GwtApplicationConfiguration config = new GwtApplicationConfiguration((int) AbstractGame.VIRTUAL_WIDTH, (int) AbstractGame.VIRTUAL_HEIGHT);
-        config.preferFlash = false;
-        return config;
+        int height = com.google.gwt.user.client.Window.getClientHeight();
+        int width = com.google.gwt.user.client.Window.getClientWidth();
+        GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(width, height);
+        return cfg;
     }
 
     @Override

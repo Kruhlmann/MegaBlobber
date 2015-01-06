@@ -7,8 +7,8 @@ gwt {
     minHeapSize="1G"
 
     src = files(file("src/")) // Needs to be in front of "modules" below.
-    modules 'com.deeep.jam.GdxDefinition'
-    devModules 'com.deeep.jam.GdxDefinitionSuperdev'
+    modules 'com.deeep.mblobber.GdxDefinition'
+    devModules 'com.deeep.mblobber.GdxDefinitionSuperdev'
     project.webAppDirName = 'webapp'
 
     compiler {

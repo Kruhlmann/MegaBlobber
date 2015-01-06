@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.deeep.mblobber.Core;
 import com.deeep.mblobber.World;
 import com.deeep.mblobber.background.Space;
 import com.deeep.mblobber.input.Assets;

@@ -2,7 +2,7 @@ package com.deeep.mblobber.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.deeep.mblobber.screens.Core;
+import com.deeep.mblobber.Core;
 
 /**
  * Created by Andreas on 12/6/2014.

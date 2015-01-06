@@ -18,7 +18,6 @@ import com.badlogic.gdx.utils.FloatArray;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.mblobber.entities.*;
 import com.deeep.mblobber.input.Assets;
-import com.deeep.mblobber.screens.Core;
 import com.deeep.mblobber.screens.Menu;
 
 import java.util.ArrayList;

@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.utils.Array;
-import com.deeep.mblobber.screens.AbstractGame;
+import com.deeep.mblobber.AbstractGame;
 
 /**
  * Created by scanevaro on 09/12/2014.
@@ -30,8 +30,8 @@ public class SplashActor extends Actor {
     private void setActions() {
         SequenceAction secAction = new SequenceAction();
         secAction.addAction(Actions.fadeIn(0.5f));
-        secAction.addAction(Actions.delay(2.5f));
-        secAction.addAction(Actions.fadeOut(0.5f));
+//        secAction.addAction(Actions.delay(2.5f));
+//        secAction.addAction(Actions.fadeOut(0.5f));
         addAction(secAction);
     }
 
@@ -42,7 +42,7 @@ public class SplashActor extends Actor {
 
         batch.setColor(color);
 
-        batch.draw(animation.getKeyFrame(stateTime), 0, 0, AbstractGame.VIRTUAL_WIDTH, AbstractGame.VIRTUAL_HEIGHT);
+        batch.draw(animation.getKeyFrame(stateTime), 0, 55, AbstractGame.VIRTUAL_WIDTH, AbstractGame.VIRTUAL_HEIGHT - 55);
     }
 
     @Override

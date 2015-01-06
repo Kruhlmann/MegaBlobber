@@ -1,12 +1,12 @@
-package com.deeep.mblobber.screens;
+package com.deeep.mblobber;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.deeep.mblobber.Interfaces.ActionResolver;
-import com.deeep.mblobber.Settings;
 import com.deeep.mblobber.input.Assets;
+import com.deeep.mblobber.screens.SplashScreen;
 
 /**
  * This class is the entry point to the game

@@ -1,4 +1,4 @@
-package com.deeep.mblobber.screens;
+package com.deeep.mblobber;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

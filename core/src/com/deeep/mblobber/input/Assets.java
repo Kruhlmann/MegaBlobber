@@ -1,6 +1,7 @@
 package com.deeep.mblobber.input;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
@@ -22,10 +23,12 @@ public class Assets {
      * instance for singleton
      */
     private static Assets assets;
+
+    public AssetManager assetManager;
     /**
      * Just a check to be sure that the assets aren't loaded multiple times
      */
-    private static boolean loaded = false;
+    public static boolean loaded = false;
     /**
      * The atlases containing all the images
      */
@@ -44,7 +47,6 @@ public class Assets {
     private BitmapFont font;
     private BitmapFont.BitmapFontData bitmapFontData;
     private Pixmap pixmap;
-    private Pixmap kappaPixmap;
 
     private Music music;
 
@@ -61,6 +63,7 @@ public class Assets {
      * Find a use for this, if there is any TODO
      */
     public Assets() {
+        assetManager = new AssetManager();
         loaded = false;
     }
 
@@ -85,100 +88,178 @@ public class Assets {
      * function to load everything. Nothing special. TODO add more resources here( sound music etc)
      */
     public void load() {
-        if (!loaded) {
-            pixmap = new Pixmap(64, 64, Pixmap.Format.RGBA8888);
-            pixmap.setColor(Color.WHITE);
-            pixmap.fillRectangle(0, 0, 64, 64);
-            blankSprite = new Sprite(new Texture(pixmap));
-            font = loadBitmapFont();
-            bitmapFontData = new BitmapFont.BitmapFontData(Gdx.files.internal("font/font.fnt"), false);
-            kappaPixmap = new Pixmap(Gdx.files.internal("kappa.png"));
-            textureAtlas = new TextureAtlas(Gdx.files.internal("TextureAtlas.txt"));
-//            logger.system(Assets.class, "All assets have been loaded");
-            loadSounds();
-            loaded = true;
-        }
+        assetManager.load("data/loading.pack", TextureAtlas.class);
+        assetManager.finishLoading();
+
+        pixmap = new Pixmap(64, 64, Pixmap.Format.RGBA8888);
+        pixmap.setColor(Color.WHITE);
+        pixmap.fillRectangle(0, 0, 64, 64);
+        blankSprite = new Sprite(new Texture(pixmap));
+
+        font = loadBitmapFont();
+
+        assetManager.load("TextureAtlas.txt", TextureAtlas.class);
+        assetManager.load("sound/blub.mp3", Sound.class);
+        assetManager.load("sound/knack.mp3", Sound.class);
+        assetManager.load("sound/blob.mp3", Sound.class);
+        assetManager.load("sound/menu.wav", Sound.class);
+        assetManager.load("music.mp3", Music.class);
+        assetManager.load("sound/pling.mp3", Sound.class);
+        assetManager.load("sound/ice.mp3", Sound.class);
+        assetManager.load("sound/letsgo1.mp3", Sound.class);
+        assetManager.load("sound/uhoh1.mp3", Sound.class);
+        assetManager.load("sound/stunning1.mp3", Sound.class);
+        assetManager.load("sound/bye1.mp3", Sound.class);
+        assetManager.load("sound/easy1.mp3", Sound.class);
+        assetManager.load("sound/keepitup1.mp3", Sound.class);
+        assetManager.load("sound/welldone1.mp3", Sound.class);
+        assetManager.load("sound/nicegoing1.mp3", Sound.class);
+        assetManager.load("sound/wow1.mp3", Sound.class);
+        assetManager.load("sound/amazing1.mp3", Sound.class);
+        assetManager.load("sound/incredible1.mp3", Sound.class);
+        assetManager.load("sound/ohmygod1.mp3", Sound.class);
+        assetManager.load("sound/multiplier1.mp3", Sound.class);
+        assetManager.load("sound/letthemcome1.mp3", Sound.class);
+        assetManager.load("sound/protection1.mp3", Sound.class);
+        assetManager.load("sound/morepoints1.mp3", Sound.class);
+        assetManager.load("sound/hastalavista1.mp3", Sound.class);
+        assetManager.load("sound/heal1.mp3", Sound.class);
+        assetManager.load("sound/blow1.mp3", Sound.class);
+        assetManager.load("sound/notsoquickly1.mp3", Sound.class);
+        assetManager.load("sound/speedup1.mp3", Sound.class);
+        assetManager.load("sound/letsgo2.mp3", Sound.class);
+        assetManager.load("sound/uhoh2.mp3", Sound.class);
+        assetManager.load("sound/stunning2.mp3", Sound.class);
+        assetManager.load("sound/bye2.mp3", Sound.class);
+        assetManager.load("sound/easy2.mp3", Sound.class);
+        assetManager.load("sound/keepitup2.mp3", Sound.class);
+        assetManager.load("sound/welldone2.mp3", Sound.class);
+        assetManager.load("sound/nicegoing2.mp3", Sound.class);
+        assetManager.load("sound/wow2.mp3", Sound.class);
+        assetManager.load("sound/amazing2.mp3", Sound.class);
+        assetManager.load("sound/incredible2.mp3", Sound.class);
+        assetManager.load("sound/ohmygod2.mp3", Sound.class);
+        assetManager.load("sound/multiplier2.mp3", Sound.class);
+        assetManager.load("sound/letthemcome2.mp3", Sound.class);
+        assetManager.load("sound/protection2.mp3", Sound.class);
+        assetManager.load("sound/morepoints2.mp3", Sound.class);
+        assetManager.load("sound/hastalavista2.mp3", Sound.class);
+        assetManager.load("sound/heal2.mp3", Sound.class);
+        assetManager.load("sound/blow2.mp3", Sound.class);
+        assetManager.load("sound/notsoquickly2.mp3", Sound.class);
+        assetManager.load("sound/speedup2.mp3", Sound.class);
+        assetManager.load("sound/letsgo3.mp3", Sound.class);
+        assetManager.load("sound/uhoh3.mp3", Sound.class);
+        assetManager.load("sound/stunning3.mp3", Sound.class);
+        assetManager.load("sound/bye3.mp3", Sound.class);
+        assetManager.load("sound/easy3.mp3", Sound.class);
+        assetManager.load("sound/keepitup3.mp3", Sound.class);
+        assetManager.load("sound/welldone3.mp3", Sound.class);
+        assetManager.load("sound/nicegoing3.mp3", Sound.class);
+        assetManager.load("sound/wow3.mp3", Sound.class);
+        assetManager.load("sound/amazing3.mp3", Sound.class);
+        assetManager.load("sound/incredible3.mp3", Sound.class);
+        assetManager.load("sound/ohmygod3.mp3", Sound.class);
+        assetManager.load("sound/multiplier3.mp3", Sound.class);
+        assetManager.load("sound/letthemcome3.mp3", Sound.class);
+        assetManager.load("sound/protection3.mp3", Sound.class);
+        assetManager.load("sound/morepoints3.mp3", Sound.class);
+        assetManager.load("sound/hastalavista3.mp3", Sound.class);
+        assetManager.load("sound/heal3.mp3", Sound.class);
+        assetManager.load("sound/blow3.mp3", Sound.class);
+        assetManager.load("sound/notsoquickly3.mp3", Sound.class);
+        assetManager.load("sound/speedup3.mp3", Sound.class);
+
+        //            logger.system(Assets.class, "All assets have been loaded");
+        loadSounds();
     }
 
     private void loadSounds() {
         //༼༼༼༼༼ຈຈຈຈຈل͜ل͜ل͜ل͜ل͜ຈຈຈຈຈ༽༽༽༽༽ﾉﾉﾉﾉﾉ
-        pointsGained = Gdx.audio.newSound(Gdx.files.internal("sound/blub.mp3"));
-        incorrect = Gdx.audio.newSound(Gdx.files.internal("sound/knack.mp3"));
-        power = Gdx.audio.newSound(Gdx.files.internal("sound/blob.mp3"));
-        menu = Gdx.audio.newSound(Gdx.files.internal("sound/menu.wav"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
-        music.play();
-        music.setLooping(true);
-        pling = Gdx.audio.newSound(Gdx.files.internal("sound/pling.mp3"));
-        ice = Gdx.audio.newSound(Gdx.files.internal("sound/ice.mp3"));
+    }
+
+    public void set() {
+        bitmapFontData = new BitmapFont.BitmapFontData(Gdx.files.internal("font/font.fnt"), false);
+        textureAtlas = assetManager.get("TextureAtlas.txt");
+
+        pointsGained = assetManager.get("sound/blub.mp3");
+        incorrect = assetManager.get("sound/knack.mp3");
+        power = assetManager.get("sound/blob.mp3");
+        menu = assetManager.get("sound/menu.wav");
+        pling = assetManager.get("sound/pling.mp3");
+        ice = assetManager.get("sound/ice.mp3");
 //        music.loop(0.35f);
         /**
          * Ruwin files
          * start, game_over, new_highscore, quit, easy, keep_it_up, well_done, nice_going, wow, amazing, incredible, oh_my_god, multiplier_loss, angel_power, protection, points, hasta, healpower, blow, speed_slow, speed_fast;
          */
-        start1 = Gdx.audio.newSound(Gdx.files.internal("sound/letsgo1.mp3"));
-        game_over1 = Gdx.audio.newSound(Gdx.files.internal("sound/uhoh1.mp3"));
-        new_highscore1 = Gdx.audio.newSound(Gdx.files.internal("sound/stunning1.mp3"));
-        quit1 = Gdx.audio.newSound(Gdx.files.internal("sound/bye1.mp3"));
-        easy1 = Gdx.audio.newSound(Gdx.files.internal("sound/easy1.mp3"));
-        keep_it_up1 = Gdx.audio.newSound(Gdx.files.internal("sound/keepitup1.mp3"));
-        well_done1 = Gdx.audio.newSound(Gdx.files.internal("sound/welldone1.mp3"));
-        nice_going1 = Gdx.audio.newSound(Gdx.files.internal("sound/nicegoing1.mp3"));
-        wow1 = Gdx.audio.newSound(Gdx.files.internal("sound/wow1.mp3"));
-        amazing1 = Gdx.audio.newSound(Gdx.files.internal("sound/amazing1.mp3"));
-        incredible1 = Gdx.audio.newSound(Gdx.files.internal("sound/incredible1.mp3"));
-        oh_my_god1 = Gdx.audio.newSound(Gdx.files.internal("sound/ohmygod1.mp3"));
-        multiplier_loss1 = Gdx.audio.newSound(Gdx.files.internal("sound/multiplier1.mp3"));
-        angel_power1 = Gdx.audio.newSound(Gdx.files.internal("sound/letthemcome1.mp3"));
-        protection1 = Gdx.audio.newSound(Gdx.files.internal("sound/protection1.mp3"));
-        points1 = Gdx.audio.newSound(Gdx.files.internal("sound/morepoints1.mp3"));
-        hasta1 = Gdx.audio.newSound(Gdx.files.internal("sound/hastalavista1.mp3"));
-        healpower1 = Gdx.audio.newSound(Gdx.files.internal("sound/heal1.mp3"));
-        blow1 = Gdx.audio.newSound(Gdx.files.internal("sound/blow1.mp3"));
-        speed_slow1 = Gdx.audio.newSound(Gdx.files.internal("sound/notsoquickly1.mp3"));
-        speed_fast1 = Gdx.audio.newSound(Gdx.files.internal("sound/speedup1.mp3"));
-        start2 = Gdx.audio.newSound(Gdx.files.internal("sound/letsgo2.mp3"));
-        game_over2 = Gdx.audio.newSound(Gdx.files.internal("sound/uhoh2.mp3"));
-        new_highscore2 = Gdx.audio.newSound(Gdx.files.internal("sound/stunning2.mp3"));
-        quit2 = Gdx.audio.newSound(Gdx.files.internal("sound/bye2.mp3"));
-        easy2 = Gdx.audio.newSound(Gdx.files.internal("sound/easy2.mp3"));
-        keep_it_up2 = Gdx.audio.newSound(Gdx.files.internal("sound/keepitup2.mp3"));
-        well_done2 = Gdx.audio.newSound(Gdx.files.internal("sound/welldone2.mp3"));
-        nice_going2 = Gdx.audio.newSound(Gdx.files.internal("sound/nicegoing2.mp3"));
-        wow2 = Gdx.audio.newSound(Gdx.files.internal("sound/wow2.mp3"));
-        amazing2 = Gdx.audio.newSound(Gdx.files.internal("sound/amazing2.mp3"));
-        incredible2 = Gdx.audio.newSound(Gdx.files.internal("sound/incredible2.mp3"));
-        oh_my_god2 = Gdx.audio.newSound(Gdx.files.internal("sound/ohmygod2.mp3"));
-        multiplier_loss2 = Gdx.audio.newSound(Gdx.files.internal("sound/multiplier2.mp3"));
-        angel_power2 = Gdx.audio.newSound(Gdx.files.internal("sound/letthemcome2.mp3"));
-        protection2 = Gdx.audio.newSound(Gdx.files.internal("sound/protection2.mp3"));
-        points2 = Gdx.audio.newSound(Gdx.files.internal("sound/morepoints2.mp3"));
-        hasta2 = Gdx.audio.newSound(Gdx.files.internal("sound/hastalavista2.mp3"));
-        healpower2 = Gdx.audio.newSound(Gdx.files.internal("sound/heal2.mp3"));
-        blow2 = Gdx.audio.newSound(Gdx.files.internal("sound/blow2.mp3"));
-        speed_slow2 = Gdx.audio.newSound(Gdx.files.internal("sound/notsoquickly2.mp3"));
-        speed_fast2 = Gdx.audio.newSound(Gdx.files.internal("sound/speedup2.mp3"));
-        start3 = Gdx.audio.newSound(Gdx.files.internal("sound/letsgo3.mp3"));
-        game_over3 = Gdx.audio.newSound(Gdx.files.internal("sound/uhoh3.mp3"));
-        new_highscore3 = Gdx.audio.newSound(Gdx.files.internal("sound/stunning3.mp3"));
-        quit3 = Gdx.audio.newSound(Gdx.files.internal("sound/bye3.mp3"));
-        easy3 = Gdx.audio.newSound(Gdx.files.internal("sound/easy3.mp3"));
-        keep_it_up3 = Gdx.audio.newSound(Gdx.files.internal("sound/keepitup3.mp3"));
-        well_done3 = Gdx.audio.newSound(Gdx.files.internal("sound/welldone3.mp3"));
-        nice_going3 = Gdx.audio.newSound(Gdx.files.internal("sound/nicegoing3.mp3"));
-        wow3 = Gdx.audio.newSound(Gdx.files.internal("sound/wow3.mp3"));
-        amazing3 = Gdx.audio.newSound(Gdx.files.internal("sound/amazing3.mp3"));
-        incredible3 = Gdx.audio.newSound(Gdx.files.internal("sound/incredible3.mp3"));
-        oh_my_god3 = Gdx.audio.newSound(Gdx.files.internal("sound/ohmygod3.mp3"));
-        multiplier_loss3 = Gdx.audio.newSound(Gdx.files.internal("sound/multiplier3.mp3"));
-        angel_power3 = Gdx.audio.newSound(Gdx.files.internal("sound/letthemcome3.mp3"));
-        protection3 = Gdx.audio.newSound(Gdx.files.internal("sound/protection3.mp3"));
-        points3 = Gdx.audio.newSound(Gdx.files.internal("sound/morepoints3.mp3"));
-        hasta3 = Gdx.audio.newSound(Gdx.files.internal("sound/hastalavista3.mp3"));
-        healpower3 = Gdx.audio.newSound(Gdx.files.internal("sound/heal3.mp3"));
-        blow3 = Gdx.audio.newSound(Gdx.files.internal("sound/blow3.mp3"));
-        speed_slow3 = Gdx.audio.newSound(Gdx.files.internal("sound/notsoquickly3.mp3"));
-        speed_fast3 = Gdx.audio.newSound(Gdx.files.internal("sound/speedup3.mp3"));
+        start1 = assetManager.get("sound/letsgo1.mp3");
+        game_over1 = assetManager.get("sound/uhoh1.mp3");
+        new_highscore1 = assetManager.get("sound/stunning1.mp3");
+        quit1 = assetManager.get("sound/bye1.mp3");
+        easy1 = assetManager.get("sound/easy1.mp3");
+        keep_it_up1 = assetManager.get("sound/keepitup1.mp3");
+        well_done1 = assetManager.get("sound/welldone1.mp3");
+        nice_going1 = assetManager.get("sound/nicegoing1.mp3");
+        wow1 = assetManager.get("sound/wow1.mp3");
+        amazing1 = assetManager.get("sound/amazing1.mp3");
+        incredible1 = assetManager.get("sound/incredible1.mp3");
+        oh_my_god1 = assetManager.get("sound/ohmygod1.mp3");
+        multiplier_loss1 = assetManager.get("sound/multiplier1.mp3");
+        angel_power1 = assetManager.get("sound/letthemcome1.mp3");
+        protection1 = assetManager.get("sound/protection1.mp3");
+        points1 = assetManager.get("sound/morepoints1.mp3");
+        hasta1 = assetManager.get("sound/hastalavista1.mp3");
+        healpower1 = assetManager.get("sound/heal1.mp3");
+        blow1 = assetManager.get("sound/blow1.mp3");
+        speed_slow1 = assetManager.get("sound/notsoquickly1.mp3");
+        speed_fast1 = assetManager.get("sound/speedup1.mp3");
+        start2 = assetManager.get("sound/letsgo2.mp3");
+        game_over2 = assetManager.get("sound/uhoh2.mp3");
+        new_highscore2 = assetManager.get("sound/stunning2.mp3");
+        quit2 = assetManager.get("sound/bye2.mp3");
+        easy2 = assetManager.get("sound/easy2.mp3");
+        keep_it_up2 = assetManager.get("sound/keepitup2.mp3");
+        well_done2 = assetManager.get("sound/welldone2.mp3");
+        nice_going2 = assetManager.get("sound/nicegoing2.mp3");
+        wow2 = assetManager.get("sound/wow2.mp3");
+        amazing2 = assetManager.get("sound/amazing2.mp3");
+        incredible2 = assetManager.get("sound/incredible2.mp3");
+        oh_my_god2 = assetManager.get("sound/ohmygod2.mp3");
+        multiplier_loss2 = assetManager.get("sound/multiplier2.mp3");
+        angel_power2 = assetManager.get("sound/letthemcome2.mp3");
+        protection2 = assetManager.get("sound/protection2.mp3");
+        points2 = assetManager.get("sound/morepoints2.mp3");
+        hasta2 = assetManager.get("sound/hastalavista2.mp3");
+        healpower2 = assetManager.get("sound/heal2.mp3");
+        blow2 = assetManager.get("sound/blow2.mp3");
+        speed_slow2 = assetManager.get("sound/notsoquickly2.mp3");
+        speed_fast2 = assetManager.get("sound/speedup2.mp3");
+        start3 = assetManager.get("sound/letsgo3.mp3");
+        game_over3 = assetManager.get("sound/uhoh3.mp3");
+        new_highscore3 = assetManager.get("sound/stunning3.mp3");
+        quit3 = assetManager.get("sound/bye3.mp3");
+        easy3 = assetManager.get("sound/easy3.mp3");
+        keep_it_up3 = assetManager.get("sound/keepitup3.mp3");
+        well_done3 = assetManager.get("sound/welldone3.mp3");
+        nice_going3 = assetManager.get("sound/nicegoing3.mp3");
+        wow3 = assetManager.get("sound/wow3.mp3");
+        amazing3 = assetManager.get("sound/amazing3.mp3");
+        incredible3 = assetManager.get("sound/incredible3.mp3");
+        oh_my_god3 = assetManager.get("sound/ohmygod3.mp3");
+        multiplier_loss3 = assetManager.get("sound/multiplier3.mp3");
+        angel_power3 = assetManager.get("sound/letthemcome3.mp3");
+        protection3 = assetManager.get("sound/protection3.mp3");
+        points3 = assetManager.get("sound/morepoints3.mp3");
+        hasta3 = assetManager.get("sound/hastalavista3.mp3");
+        healpower3 = assetManager.get("sound/heal3.mp3");
+        blow3 = assetManager.get("sound/blow3.mp3");
+        speed_slow3 = assetManager.get("sound/notsoquickly3.mp3");
+        speed_fast3 = assetManager.get("sound/speedup3.mp3");
+
+        music = assetManager.get("music.mp3");
+        music.play();
+        music.setLooping(true);
     }
 
     public Sprite getBlankSprite() {
@@ -193,80 +274,8 @@ public class Assets {
 
         if (pixmap != null)
             pixmap.dispose();
-        if (textureAtlas != null)
-            textureAtlas.dispose();
-//        logger.system(Assets.class, "All assets have been disposed");
 
-        music.dispose();
-        pointsGained.dispose();
-        incorrect.dispose();
-        power.dispose();
-        menu.dispose();
-        pling.dispose();
-        ice.dispose();
-        start1.dispose();
-        game_over1.dispose();
-        new_highscore1.dispose();
-        quit1.dispose();
-        easy1.dispose();
-        keep_it_up1.dispose();
-        well_done1.dispose();
-        nice_going1.dispose();
-        wow1.dispose();
-        amazing1.dispose();
-        incredible1.dispose();
-        oh_my_god1.dispose();
-        multiplier_loss1.dispose();
-        angel_power1.dispose();
-        protection1.dispose();
-        points1.dispose();
-        hasta1.dispose();
-        healpower1.dispose();
-        blow1.dispose();
-        speed_slow1.dispose();
-        speed_fast1.dispose();
-        start2.dispose();
-        game_over2.dispose();
-        new_highscore2.dispose();
-        quit2.dispose();
-        easy2.dispose();
-        keep_it_up2.dispose();
-        well_done2.dispose();
-        nice_going2.dispose();
-        wow2.dispose();
-        amazing2.dispose();
-        incredible2.dispose();
-        oh_my_god2.dispose();
-        multiplier_loss2.dispose();
-        angel_power2.dispose();
-        protection2.dispose();
-        points2.dispose();
-        hasta2.dispose();
-        healpower2.dispose();
-        blow2.dispose();
-        speed_slow2.dispose();
-        speed_fast2.dispose();
-        start3.dispose();
-        game_over3.dispose();
-        new_highscore3.dispose();
-        quit3.dispose();
-        easy3.dispose();
-        keep_it_up3.dispose();
-        well_done3.dispose();
-        nice_going3.dispose();
-        wow3.dispose();
-        amazing3.dispose();
-        incredible3.dispose();
-        oh_my_god3.dispose();
-        multiplier_loss3.dispose();
-        angel_power3.dispose();
-        protection3.dispose();
-        points3.dispose();
-        hasta3.dispose();
-        healpower3.dispose();
-        blow3.dispose();
-        speed_slow3.dispose();
-        speed_fast3.dispose();
+        assetManager.dispose();
     }
 
     /**
@@ -309,9 +318,5 @@ public class Assets {
 
     public BitmapFont.BitmapFontData getBitmapFontData() {
         return bitmapFontData;
-    }
-
-    public Pixmap getKappaPixmap() {
-        return kappaPixmap;
     }
 }
