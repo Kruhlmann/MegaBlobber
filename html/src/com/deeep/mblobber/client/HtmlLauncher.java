@@ -16,15 +16,15 @@ public class HtmlLauncher extends GwtApplication {
         super.onModuleLoad();
         com.google.gwt.user.client.Window.addResizeHandler(new ResizeHandler() {
             public void onResize(ResizeEvent ev) {
-                Gdx.graphics.setDisplayMode(ev.getWidth(), ev.getHeight(), false);
+                Gdx.graphics.setDisplayMode(ev.getWidth() - 100, ev.getHeight() - 100, false);
             }
         });
     }
 
     @Override
     public GwtApplicationConfiguration getConfig() {
-        int height = com.google.gwt.user.client.Window.getClientHeight();
-        int width = com.google.gwt.user.client.Window.getClientWidth();
+        int height = com.google.gwt.user.client.Window.getClientHeight() - 100;
+        int width = com.google.gwt.user.client.Window.getClientWidth() - 100;
         GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(width, height);
         return cfg;
     }
