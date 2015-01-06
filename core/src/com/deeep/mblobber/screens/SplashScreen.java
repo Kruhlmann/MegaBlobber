@@ -24,7 +24,7 @@ import com.deeep.mblobber.input.Assets;
  * Created by scanevaro on 09/12/2014.
  */
 public class SplashScreen implements Screen {
-    private static final float DURATION = 0.5f; //Duration of the SplashScreen
+    private static final float DURATION = 3.5f; //Duration of the SplashScreen
     private Core game;
     private Stage stage;
     private SplashActor splashSprite;
@@ -70,6 +70,17 @@ public class SplashScreen implements Screen {
 
         if (Assets.getAssets().assetManager.update() && !Assets.loaded) {
             Assets.getAssets().set();
+
+            if (splashSprite.stateTime < 3f) {
+                /**Delay fade out*/
+                splashSprite.addAction(Actions.delay(3f - splashSprite.stateTime));
+                loadingFrame.addAction(Actions.delay(3f - splashSprite.stateTime));
+                loadingBar.addAction(Actions.delay(3f - splashSprite.stateTime));
+                loadingBarHidden.addAction(Actions.delay(3f - splashSprite.stateTime));
+                loadingBg.addAction(Actions.delay(3f - splashSprite.stateTime));
+            }
+
+            /**Fade out actors*/
             splashSprite.addAction(Actions.fadeOut(0.5f));
             loadingFrame.addAction(Actions.fadeOut(0.5f));
             loadingBar.addAction(Actions.fadeOut(0.5f));
@@ -80,7 +91,7 @@ public class SplashScreen implements Screen {
                 public void run() {
                     game.setScreen(new GameScreen(game));
                 }
-            }, DURATION);
+            }, DURATION - splashSprite.stateTime);
             Assets.loaded = true;
         }
 

@@ -16,7 +16,7 @@ import com.deeep.mblobber.AbstractGame;
  */
 public class SplashActor extends Actor {
     private Animation animation;
-    private float stateTime;
+    public float stateTime;
 
     public SplashActor() {
         Array<TextureAtlas.AtlasRegion> atlasRegions = new TextureAtlas(Gdx.files.internal("data/newLogo.pack")).getRegions();
